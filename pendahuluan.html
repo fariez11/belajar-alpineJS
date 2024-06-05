@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="kurang()"> - </button>
+    <span class="hasil">0</span>
+    <button onclick="tambah()"> + </button>
+    
+    <script>
+         let hasil = document.querySelector('.hasil')
+         let count = 0
+         
+         const kurang = () => {
+            let hasilValue = parseInt(hasil.innerHTML)
+            if(hasilValue > 0){
+                count--
+                hasil.innerHTML = count
+            }
+         }
+
+         const tambah = () => {
+            count++
+            hasil.innerHTML = count
+         }
+
+
+    </script>
+</body>
+</html>
