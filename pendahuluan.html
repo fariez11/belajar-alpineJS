@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Belajar Alpine</title>
 </head>
 <body>
     <button onclick="kurang()"> - </button>
@@ -11,21 +11,24 @@
     <button onclick="tambah()"> + </button>
     
     <script>
-         let hasil = document.querySelector('.hasil')
-         let count = 0
+        let hasil = document.querySelector('.hasil')
+        let count = 0
+        console.log(x = count);            // (x tidak dianggap)
          
-         const kurang = () => {
+        const kurang = () => {
             let hasilValue = parseInt(hasil.innerHTML)
             if(hasilValue > 0){
                 count--
                 hasil.innerHTML = count
+                console.log(x = count);
             }
-         }
+        }
 
-         const tambah = () => {
+        const tambah = () => {
             count++
             hasil.innerHTML = count
-         }
+            console.log(x = count);
+        }
 
 
     </script>

@@ -1,0 +1,86 @@
+___________
+PENDAHULUAN
+> perjalaan karir si pembuat
+    vanilla PHP ~> codeigniter ~> laravel ~> vue ~> livewire ~> alpineJS 
+
+> Latar Belakang
+    - tools yang lebih simple dari livewire
+    - hanya untuk interaktivitas sederhana
+    - seperti jquery, tapi bukan
+    - declarative & reactive
+    - tailwind, tapi untuk javasctipt
+
+> kapan menggunakan alpineJS? 
+    - show & hide DOM elements
+    - bind user input
+    - event listening
+    = menipulation class
+
+> pre-requisit(pengetahuan yang perlu dimiliki)
+    - javasctipt dasar
+    - DOM
+    - jQuery (opsional)
+
+> struktur alpineJS
+    - 2 cara install
+    - 18 directive
+    - 9 magic property
+    - 3 global method
+_____
+STATE
+
+    "state adalah inti dari semua yang kita lakukan di alpineJS" - alpinejs.dev
+
+state : - Data javasctipt yang 'dipantau' perubahannya oleh alpineJS
+        - bisa dibuat secara local atau global 
+        - menggunakan: x-data & Alpine.store()
+    
+
+__________
+TEMPLATING
+    "AlpineJS menawarkan banyak directive untuk memanipulasi DOM" - alpinejs.dev
+
+
+    template directive : > x-text           > x-show            > x-transition
+                         > x-bind           > x-if              > x-for
+                         > x-html 
+
+*note : 
+    - x-text bisa juga berisi expression
+    - x-html "gunakan hanya untuk elemen yang dipercaya jika konten digenerate oleh user, 
+              me-render elemen secara dinamis oleh 'pihak ketiga' dapat menyebabkan serangan XSS" - alpinejs.dev/directive/html
+
+_____
+EVENT 
+    ex: x-data x-on:{event_name} / @{event_name}s
+
+
+    even object : jika ingin mengetahui element yang di klik dan menampilkan beberapa informasi yang ada didalamnya
+        ex: $event
+
+    custom event : bikin event sendiri selain yang ada pada javascript
+        ex: $dispatch(name,action)
+
+    event modifiers(perilaku tambahan pada event) :     - prevent   : menimpa event default 
+                                                        - stop      : mengurangi event bubling
+                                                        - outside   : merubah aksi ketika menklik diluar element yang diberi event ini   
+                                                        - window    : 
+                                                        - once      : menghindari event yang diulang berkali kali (agar fungsi tidak dipanggil berkali-kali / hanya berjalan 1 kali)               
+                                                        - debounce  : event akan dijalankan setelah aksi selesai (jeda sesuai jumlah milisecond yang dimasukkan (milisecond))
+                                                        - ...
+
+*note: 
+    - bisa menggunakan semua event yang ada di javascript
+    - tambahkan x-data sebelum memanggil event (pada local div juga bisa)
+    
+_____
+MODEL (TWO WAY BINDING)
+    
+    ex: x-model 
+
+    
+*note : 
+    - x-bind bisa diubah menjadi :
+        ex: x-bind:class ~> :class
+    
+    

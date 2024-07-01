@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div x-data="{pesan : '',benda: '', hobi : []}" class="w-1/2 min-h-full mx-auto text-center mt-10 bg-blue-200 px-10 pb-10 rounded-xl shadow" @cetak="alert('data telah terkirim oleh ' + $event.detail.pengirim)">
+        <p class="text-slate-400 text-center pb-1 bg-zinc-50 w-52 rounded-b-md">model</p>
+        <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"> Masukkan pesan</label>
+        <textarea x-model="pesan" class="min-h-10 rounded-lg p-2.5 w-full block bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"></textarea>
+        <span x-text="pesan" class="text-lg text-white font-bold float-left"></span>
+        <span x-text="pesan.length" class="text-lg font-bold float-right" :class="pesan.length < 15 ? 'text-white' : 'text-rose-500'"></span>
+        <br>
+        <br>
+        <!--<hr class="h-px my-8 bg-gray-900 border-0 dark:bg-gray-900"> -->
+        <div class="flex items-center mb-2">
+            <input type="checkbox" id="checkbox" x-model="benda" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"> 
+            <label x-text="!benda ? 'kosong' : 'terisi'" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"></label>
+        </div>
+        <!-- <hr class="h-px my-8 bg-gray-900 border-0 dark:bg-gray-900"> -->
+        <div class="mt-5">
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="menulis" value="menulis" x-model="hobi" class="w-4 h-4 text-blue-500 border-gray-300 rounded">
+                <label for="" class="ml-1">Menulis</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="ngehalu" value="ngegame" x-model="hobi" class="w-4 h-4 text-blue-500 border-gray-300 rounded">
+                <label for="" class="ml-1">Ngegame</label>
+            </div>
+            <div class="flex items-center mb-2">
+                <input type="checkbox" id="ngehalu" value="ngehalu" x-model="hobi" class="w-4 h-4 text-blue-500 border-gray-300 rounded">
+                <label for="" class="ml-1">Ngehalu pacarin personil jeketi48</label>
+            </div>
+        </div>
+        <!-- <p class="text-left text-sm"><span x-text="hobi" ></span></p> -->
+        <p class="text-left text-sm">hobi : <span x-text="hobi.map(h => h.charAt(0).toUpperCase() + h.slice(1))"></span></p>
+    </div>
+
+    
+</body>
+</html>

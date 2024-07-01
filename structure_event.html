@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <p class="text-slate-900 text-center py-1 bg-zinc-100 w-52 rounded-b-md absolute top-0 left-0 font-semibold">EVENTS</p>
+    <div x-data="{message: 'Welcome back, brok',text : false}"
+        class="container mx-auto w-1/2 text-center mt-10 bg-emerald-200 p-10 rounded-xl shadow">
+        
+        <button class="py-2 px-5 text-white rounded-md bg-emerald-500 shadow-lg hover:shadow-blue-500/50"
+        id="buttonMessage"
+        data-message="ini pesan"
+        @click="tampilLog;console.log($event.target.dataset.message);alert(message)"
+        @mouseenter="text = true;$event.target.classList.add('bg-blue-500')" 
+        @mouseleave="text = false ; console.log($event.target.id);$event.target.classList.remove('bg-blue-500')"
+        x-text="text ? 'ready...': 'click me'"></button>
+    </div>
+
+    <div class="flex flex-row mx-auto">
+        <!-- @keyup & keydown (keyboard events) & $dispatch(custom events)-->
+        <div x-data="{nama: 'supeno'}" class="basis-3/4 mx-5 text-center mt-10 bg-blue-200 px-10 pb-10 rounded-xl shadow" @cetak="alert('data telah terkirim oleh ' + $event.detail.pengirim)">
+            <p class="text-slate-400 text-center pb-1 bg-zinc-50 w-52 rounded-b-md">keyup , keydown & dispatch</p>
+            <label for="nama" class="text-sm font-medium text-gray-900 block mb-2"> Masukkan nama</label>
+            <input type="text" class="rounded-lg p-2.5 w-full block bg-gray-50 border border-gray-300 text-gray-900 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
+            @keyup.shift.enter="alert(nama)" x-model="nama">
+            <hr>
+            <button class="py-2 px-5 text-white rounded-md bg-slate-500 mt-3 hover:bg-slate-600" @click="$dispatch('cetak', { pengirim : nama})">dispatch</button>
+        </div>
+
+        <!-- event modifiers  -->
+        <div x-data class="basis-1/4 mx-5 text-center mt-10 bg-blue-200 px-10 pb-10 rounded-xl shadow">
+            <p class="text-slate-400 text-center pb-1 bg-zinc-50 w-24 rounded-b-md">modifiers</p>
+
+            <label for="nama" class="text-sm font-medium text-gray-900 block mb-2">event</label>
+            
+            <ul class="w-48 mx-auto font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                <li class="w-full px-4 py-2 border-b border-gray-200 rounded-t-lg dark:border-gray-600" href="/post" @click.prevent="alert('mohon maaf untuk link ini masih belum tersedia!')">Prevent</li>
+                <li class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600" @click="alert('menu diklik')"><span @click.stop="alert('menghindari event bubling')">Stop</span></li>
+                <li x-data="{status : true}" class="w-full px-4 py-2 border-b border-gray-200 dark:border-gray-600" @click.outside="status = false" @keyup.esc.window="status = true" x-bind:class=" status ? 'text-dark-500' : 'text-green-500' ">outside</li>
+                <li x-data="{angka : 1}" class="w-full px-4 py-2 border-b" @click.once="angka++"> once <span x-text="angka"></span></li>
+            </ul>
+                <input type="text" class="block mt-2 flex-1 border-0 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6 mx-auto rounded-md text-center" placeholder="debounce" @keyup.debounce.750="alert($event.target.value)">
+            
+            
+        </div>
+    </div>
+
+    
+
+    <script>
+        function tampilLog(e){
+            e.target.classList.toggle('italic')
+        }
+    </script>
+</body>
+
+</html>
